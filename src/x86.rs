@@ -8,7 +8,7 @@ pub unsafe fn inb(port: u16) -> u8 {
     // same: `a` for value, and `d` for the port address.
     let result: u8;
     asm!(
-        "inb {0:x}, {1}",
+        "in {0:x}, {1}",
         in(reg) port,
         out(reg_byte) result,
     );
@@ -18,7 +18,7 @@ pub unsafe fn inb(port: u16) -> u8 {
 /// Write a `u8`-sized `value` to `port`.
 pub unsafe fn outb(value: u8, port: u16) {
     asm!(
-        "outb {1}, {0:x}",
+        "out {1}, {0:x}",
         in(reg) port,
         in(reg_byte) value,
     );
@@ -29,7 +29,7 @@ pub unsafe fn outb(value: u8, port: u16) {
 pub unsafe fn inw(port: u16) -> u16 {
     let result: u16;
     asm!(
-        "inw {0:x}, {1:x}",
+        "in {0:x}, {1:x}",
         in(reg) port,
         out(reg) result,
     );
@@ -40,7 +40,7 @@ pub unsafe fn inw(port: u16) -> u16 {
 /// Write a `u8`-sized `value` to `port`.
 pub unsafe fn outw(value: u16, port: u16) {
     asm!(
-        "outw {1:x}, {0:x}",
+        "out {1:x}, {0:x}",
         in(reg) port,
         in(reg) value,
     );
@@ -51,7 +51,7 @@ pub unsafe fn outw(value: u16, port: u16) {
 pub unsafe fn inl(port: u16) -> u32 {
     let result: u32;
     asm!(
-        "inw {0:x}, {1:e}",
+        "in {0:x}, {1:e}",
         in(reg) port,
         out(reg) result,
     );
