@@ -40,7 +40,7 @@ pub unsafe fn inw(port: u16) -> u16 {
 /// Write a `u8`-sized `value` to `port`.
 pub unsafe fn outw(value: u16, port: u16) {
     asm!(
-        "inw {0:x}, {1:x}",
+        "outw {1:x}, {0:x}",
         in(reg) port,
         in(reg) value,
     );
